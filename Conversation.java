@@ -1,6 +1,14 @@
 import java.util.*;
 class Conversation {
 
+  /**
+   * This method starts by asking the amount of rounds of conversation. Then it enters a for loop where it will run the number
+   * of times given the rounds then it will split up the words in the user input then check if each of those words has a mirror word.
+   * If it does it replaces it and appends the new response to the chatbox and to transcript. If it doesnt it replies with a regular response.
+   * Then after the chatbox is terminated it prints out the transcript
+   * @param arguments nothing
+   * @ return nothing
+   */
   public static void main(String[] arguments) {
     // You will start the conversation here.
     System.out.print("How many rounds? ");
@@ -15,8 +23,6 @@ class Conversation {
       String userResponse = response.nextLine();
       String[] mirrorWords = {"I", "me", "Me","Am", "am", "You", "you", "my", "My", "your", "Your"};
       String [] splitPhrase = userResponse.split(" ");
-      //System.out.println(splitPhrase.getClass().getName());
-      //System.out.println(Arrays.toString(splitPhrase));
 
       for (String word: splitPhrase) {
         int index = Arrays.asList(splitPhrase).indexOf(word);
@@ -38,17 +44,16 @@ class Conversation {
         if (word.equals(mirrorWords[9]) || word.equals(mirrorWords[10])) {
           splitPhrase[index] = "my";
         }
-        //System.out.println(splitPhrase);
+        
       }
-       //for (String word: splitPhrase){
-        // System.out.print(word + " ");
+      
        String new_sent = String.join(" ", splitPhrase);
        if (!userResponse.equals(new_sent)) {
         transcript.add(userResponse);
         transcript.add(new_sent);
         System.out.println(new_sent);
        }
-       //}
+       
 
       if (userResponse.equals(new_sent)){     
         String[] replies = {"Intresting!", "Cool!", "Nice!", "Ok."};
